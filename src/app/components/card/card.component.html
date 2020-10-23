@@ -1,0 +1,17 @@
+<div class="wrapper">
+	<div class="card-header">
+		<h1>{{header}}</h1>
+	</div>
+	<mat-divider></mat-divider>
+	<div class="content-wrapper">
+		<div class="todo" *ngFor="let todo of TODOS; let last = last ">
+			<div class="todo-name">
+				{{todo.name}}
+			</div>
+			<mat-divider *ngIf="!last"></mat-divider>
+		</div>
+		<div class="actions">
+			<button mat-icon-button><span class="material-icons add-icon">add</span></button>
+		</div>
+	</div>
+</div>
