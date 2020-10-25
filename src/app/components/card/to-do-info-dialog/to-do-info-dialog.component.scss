@@ -1,0 +1,46 @@
+@import "../../../../variables";
+.to-do-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.info-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 200px;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    .label {
+        font-size: 12px;
+        margin-bottom: 7px;
+        margin-top: 20px;
+    }
+}
+.dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    margin-top: -8;
+    margin-bottom: -8;
+}
+.mat-dialog-title {
+    color: $white;
+    margin: 0;
+    padding-bottom: 16px;
+}
+button {
+    color: $white;
+    background-color: $medium-dark-gray;
+    transition: $transition;
+    width: 80px;
+}
+.button-row {
+    width: 68%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

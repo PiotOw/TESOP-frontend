@@ -4,8 +4,8 @@
 	</div>
 	<mat-divider></mat-divider>
 	<div class="content-wrapper">
-		<div class="todo" *ngFor="let todo of TODOS; let last = last ">
-			<div class="todo-name">
+		<div class="todo" *ngFor="let todo of TODOLIST; let last = last ">
+			<div class="todo-name" (click)="getInfo(todo)" >
 				{{todo.name}}
 			</div>
 			<mat-divider *ngIf="!last"></mat-divider>

@@ -14,18 +14,20 @@ import {
     MatProgressSpinnerModule, MatSelectModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
-import {NewToDoDialogComponent} from './components/card/new-to-do-dialog/new-to-do-dialog.component';
+import {EditToDoDialogComponent} from './components/card/edit-to-do-dialog/edit-to-do-dialog.component';
 import {MessageDialogComponent} from './components/message-dialog/message-dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ToDoInfoDialogComponent } from './components/card/to-do-info-dialog/to-do-info-dialog.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         CardComponent,
         DashboardComponent,
-        NewToDoDialogComponent,
-        MessageDialogComponent
+        EditToDoDialogComponent,
+        MessageDialogComponent,
+        ToDoInfoDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -48,7 +50,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     bootstrap: [AppComponent],
     entryComponents: [
         MessageDialogComponent,
-        NewToDoDialogComponent]
+        EditToDoDialogComponent,
+        ToDoInfoDialogComponent]
 })
 export class AppModule {
 }
