@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ToDo} from '../../../../models/toDo';
 import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
 import {EditToDoDialogComponent} from '../edit-to-do-dialog/edit-to-do-dialog.component';
+import {ApiService} from '../../../api.service';
+import {ReloadService} from '../../../reload.service';
 
 @Component({
     selector: 'app-to-do-info-dialog',
@@ -13,8 +15,10 @@ export class ToDoInfoDialogComponent implements OnInit {
     toDo: ToDo;
     date: Date;
 
-    constructor(private dialogRef: MatDialogRef<ToDoInfoDialogComponent>,
-                private dialog: MatDialog) {
+    constructor(private api: ApiService,
+                private dialogRef: MatDialogRef<ToDoInfoDialogComponent>,
+                private dialog: MatDialog,
+                private reloadService: ReloadService) {
     }
 
     ngOnInit() {
@@ -27,13 +31,17 @@ export class ToDoInfoDialogComponent implements OnInit {
     }
 
     close() {
-        this.dialogRef.close();
+        // this.dialogRef.close();
+        this.reloadService.changeData();
     }
 
     edit() {
         let dialogRef: MatDialogRef<EditToDoDialogComponent, any>;
         dialogRef = this.dialog.open(EditToDoDialogComponent, {data: this.toDo});
-        dialogRef.afterClosed();
-
+        dialogRef.afterClosed().subscribe(response => {
+            if (response){
+                this.api.updateToDo(this.toDo.toDoId.uuid, response)
+            }
+        });
     }
 }

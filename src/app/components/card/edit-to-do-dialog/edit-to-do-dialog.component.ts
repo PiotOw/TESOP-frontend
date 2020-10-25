@@ -2,8 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {ToDoDto} from '../../../../models/toDoDto';
-import {ToDoStatus} from '../../../../mocks/mock-status';
 import {ToDo} from '../../../../models/toDo';
+import {STATUSES} from '../../../../models/statuses';
 
 @Component({
     selector: 'app-new-to-do-dialog',
@@ -13,12 +13,13 @@ import {ToDo} from '../../../../models/toDo';
 export class EditToDoDialogComponent implements OnInit {
 
     IMPORTANCE = [1, 2, 3, 4, 5];
-    status: ToDoStatus;
+    STATUSES = STATUSES;
     toDoFormGroup = new FormGroup({
         name: new FormControl('', Validators.required),
         description: new FormControl(''),
         deadlineDate: new FormControl('', Validators.required),
-        importance: new FormControl('', Validators.required)
+        importance: new FormControl('', Validators.required),
+        status: new FormControl('', Validators.required)
     });
     toDo: ToDo;
 
@@ -30,8 +31,9 @@ export class EditToDoDialogComponent implements OnInit {
         if (this.toDo) {
             this.toDoFormGroup.controls.name.setValue(this.toDo.name);
             this.toDoFormGroup.controls.description.setValue(this.toDo.description ? this.toDo.description : '');
-            this.toDoFormGroup.controls.deadlineDate.setValue(this.toDo.deadline);
+            this.toDoFormGroup.controls.deadlineDate.setValue(new Date(this.toDo.deadline));
             this.toDoFormGroup.controls.importance.setValue(this.toDo.importance);
+            this.toDoFormGroup.controls.status.setValue(this.toDo.toDoStatus);
         }
     }
 
@@ -40,7 +42,7 @@ export class EditToDoDialogComponent implements OnInit {
             const data: ToDoDto = {
                 name: this.toDoFormGroup.controls.name.value,
                 description: this.toDoFormGroup.controls.description.value,
-                toDoStatus: this.status,
+                toDoStatus: this.toDoFormGroup.controls.status.value,
                 deadline: this.getUnixTimestamp(),
                 importance: this.toDoFormGroup.controls.importance.value
             };

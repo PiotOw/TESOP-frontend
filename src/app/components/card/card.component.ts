@@ -29,7 +29,7 @@ export class CardComponent implements OnInit {
 
     addToDo() {
         const dialogRef = this.dialog.open(EditToDoDialogComponent);
-        dialogRef.componentInstance.status = this.status;
+        dialogRef.componentInstance.toDoFormGroup.controls.status.setValue(this.status);
         dialogRef.afterClosed().subscribe(response => {
             if (response) {
                 this.api.createToDo(response).subscribe(() => {
