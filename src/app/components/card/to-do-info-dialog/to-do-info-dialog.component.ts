@@ -23,7 +23,6 @@ export class ToDoInfoDialogComponent implements OnInit {
 
     ngOnInit() {
         this.date = this.parseToDate();
-        console.log(this.toDo);
     }
 
     parseToDate() {
@@ -31,17 +30,29 @@ export class ToDoInfoDialogComponent implements OnInit {
     }
 
     close() {
-        // this.dialogRef.close();
-        this.reloadService.changeData();
+        this.dialogRef.close();
     }
 
     edit() {
         let dialogRef: MatDialogRef<EditToDoDialogComponent, any>;
         dialogRef = this.dialog.open(EditToDoDialogComponent, {data: this.toDo});
         dialogRef.afterClosed().subscribe(response => {
-            if (response){
-                this.api.updateToDo(this.toDo.toDoId.uuid, response)
+            if (response) {
+                this.api.updateToDo(this.toDo.toDoId.uuid, response).subscribe(() => {
+                    this.reloadService.refetchToDos();
+                    this.api.fetchOneToDo(this.toDo.toDoId.uuid).subscribe(res => {
+                        this.toDo = res;
+                        this.date = this.parseToDate();
+                    });
+                });
             }
+        });
+    }
+
+    delete() {
+        this.api.deleteToDo(this.toDo.toDoId.uuid).subscribe(() => {
+            this.reloadService.refetchToDos();
+            this.dialogRef.close();
         });
     }
 }

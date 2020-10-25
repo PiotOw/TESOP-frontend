@@ -18,7 +18,7 @@ import {EditToDoDialogComponent} from './components/card/edit-to-do-dialog/edit-
 import {MessageDialogComponent} from './components/message-dialog/message-dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
-import { ToDoInfoDialogComponent } from './components/card/to-do-info-dialog/to-do-info-dialog.component';
+import {ToDoInfoDialogComponent} from './components/card/to-do-info-dialog/to-do-info-dialog.component';
 
 @NgModule({
     declarations: [

@@ -8,7 +8,7 @@ export class ReloadService {
     private data = new BehaviorSubject(1);
     data$ = this.data.asObservable();
 
-    changeData() {
+    refetchToDos() {
         this.data.next(Math.random());
     }
 }

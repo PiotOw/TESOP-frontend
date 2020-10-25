@@ -1,7 +1,7 @@
 @import "../../../variables";
 
 .wrapper {
-	box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
 	background: $border-color;
 	border-radius: 16px;
 	padding: 8px 16px 16px 16px
@@ -12,11 +12,15 @@
 }
 
 .todo-name {
-	padding-top: 8px;
-	padding-bottom: 8px;
 	transition: $transition;
-}
+	padding: 16px;
+	border-radius: 8px;
+	cursor: pointer;
 
+	&:hover {
+		background-color: $dark-gray-hover;
+	}
+}
 
 .actions {
 	width: 100%;

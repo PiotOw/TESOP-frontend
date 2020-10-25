@@ -5,6 +5,7 @@ import {ToDo} from '../../../models/toDo';
 import {MatDialog} from '@angular/material';
 import {EditToDoDialogComponent} from './edit-to-do-dialog/edit-to-do-dialog.component';
 import {ToDoInfoDialogComponent} from './to-do-info-dialog/to-do-info-dialog.component';
+import {ReloadService} from '../../reload.service';
 
 @Component({
     selector: 'app-card',
@@ -19,12 +20,18 @@ export class CardComponent implements OnInit {
     TODOLIST: ToDo[];
 
     constructor(private api: ApiService,
-                private dialog: MatDialog) {
+                private dialog: MatDialog,
+                private reloadService: ReloadService) {
     }
 
     ngOnInit() {
-        console.log(this.TODOS);
         this.TODOLIST = this.TODOS;
+
+        this.reloadService.data$.subscribe(() => {
+            this.api.fetchAllToDos().subscribe(res => {
+                this.TODOLIST = res.filter(todo => todo.toDoStatus === this.status);
+            });
+        });
     }
 
     addToDo() {
@@ -33,10 +40,8 @@ export class CardComponent implements OnInit {
         dialogRef.afterClosed().subscribe(response => {
             if (response) {
                 this.api.createToDo(response).subscribe(() => {
-                    this.api.fetchAllToDos().subscribe(res => {
-                        this.TODOLIST = res.filter(todo => todo.toDoStatus === this.status);
-                    });
-                }, error => error.log);
+                    this.reloadService.refetchToDos();
+                });
             }
         });
     }

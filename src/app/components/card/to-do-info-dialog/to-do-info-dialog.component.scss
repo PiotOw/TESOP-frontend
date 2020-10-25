@@ -1,46 +1,56 @@
 @import "../../../../variables";
+
 .to-do-info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
+
 .info-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 200px;
-    padding-bottom: 8px;
-    margin-bottom: 16px;
-    .label {
-        font-size: 12px;
-        margin-bottom: 7px;
-        margin-top: 20px;
-    }
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	width: 200px;
+	padding-bottom: 8px;
+	margin-bottom: 16px;
+	.label {
+		font-size: 12px;
+		margin-bottom: 7px;
+		margin-top: 20px;
+	}
 }
+
 .dialog {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    margin-top: -8;
-    margin-bottom: -8;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 350px;
+	margin-top: -8;
+	margin-bottom: -8;
+	color: $white;
 }
+
 .mat-dialog-title {
-    color: $white;
-    margin: 0;
-    padding-bottom: 16px;
+	color: $white;
+	margin: 0;
+	padding-bottom: 16px;
+	font-size: 20px;
 }
+
 button {
-    color: $white;
-    background-color: $medium-dark-gray;
-    transition: $transition;
-    width: 80px;
+	color: $white;
+	background-color: $medium-dark-gray;
+	transition: $transition;
+	width: 80px;
 }
+
 .button-row {
-    width: 68%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+	margin-top: 16px;
+	margin-bottom: 8px;
+	width: 75%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
