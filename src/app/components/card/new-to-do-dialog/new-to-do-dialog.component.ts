@@ -59,10 +59,9 @@ export class NewToDoDialogComponent implements OnInit {
             deadline: this.getUnixTimestamp(),
             importance: this.toDoFormGroup.controls.importance.value
         };
-        // this.api.createToDo(data).subscribe(response => {
-        //     console.log(response);
-        // });
-        console.log(data);
+        this.api.createToDo(data).subscribe(response => {
+            console.log(response);
+        });
     }
 
     getUnixTimestamp(): number {
