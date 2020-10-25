@@ -26,6 +26,7 @@ export class CardComponent implements OnInit {
 
     addToDo() {
         const dialogRef = this.dialog.open(NewToDoDialogComponent);
+        dialogRef.componentInstance.status = this.status;
     }
 
 }
