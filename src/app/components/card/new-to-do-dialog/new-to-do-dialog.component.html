@@ -1,0 +1,74 @@
+<div class="dialog">
+	<h1 mat-dialog-title>Edit User:</h1>
+	<form class="add-to-do-form" [formGroup]="toDoFormGroup">
+		<mat-form-field hideRequiredMarker>
+			<input matInput placeholder="Name"
+				   [formControlName]="'name'"
+				   autocomplete="off"
+				   required>
+			<mat-error *ngIf="toDoFormGroup.controls['name'].hasError('required')">
+				This field is <strong>required</strong>
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field hideRequiredMarker>
+			<input matInput placeholder="Description"
+				   [formControlName]="'description'"
+				   autocomplete="off">
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput
+				   [matDatepicker]="datepicker"
+				   placeholder="Deadline"
+				   [formControlName]="'deadlineDate'">
+			<mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+			<mat-datepicker #datepicker></mat-datepicker>
+			<mat-error *ngIf="toDoFormGroup.controls['deadlineDate'].hasError('required')">
+				This field is <strong>required</strong>
+			</mat-error>
+		</mat-form-field>
+		<div class="double-field">
+			<mat-form-field>
+				<mat-label>Hour</mat-label>
+				<mat-select
+					[formControlName]="'deadlineHour'">
+					<mat-option *ngFor="let hour of HOURS; let i = index" [value]="i">
+						{{hour}}
+					</mat-option>
+				</mat-select>
+				<mat-error *ngIf="toDoFormGroup.controls['deadlineHour'].hasError('required')">
+					This field is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<mat-label>Minute</mat-label>
+				<mat-select
+					[formControlName]="'deadlineMinutes'">
+					<mat-option *ngFor="let minutes of MINUTES; let i = index" [value]="i">
+						{{minutes}}
+					</mat-option>
+				</mat-select>
+				<mat-error *ngIf="toDoFormGroup.controls['deadlineMinutes'].hasError('required')">
+					This field is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+
+		</div>
+		<mat-form-field>
+			<mat-label>Importance</mat-label>
+			<mat-select
+				[formControlName]="'importance'">
+				<mat-option *ngFor="let number of IMPORTANCE" [value]="number">
+					{{number}}
+				</mat-option>
+			</mat-select>
+			<mat-error *ngIf="toDoFormGroup.controls['importance'].hasError('required')">
+				This field is <strong>required</strong>
+			</mat-error>
+		</mat-form-field>
+	</form>
+	<div class="button-row">
+		<button type="submit" class="mat-elevation-z4" mat-button (click)="onSubmit()">Done</button>
+		<button class="mat-elevation-z4" mat-button (click)="onCancel()">Cancel</button>
+	</div>
+</div>

@@ -1,10 +1,10 @@
 export enum ToDoStatus {
     OPEN = 'OPEN',
-    INPROGRESS = 'INPROGRESS',
+    IN_PROGRESS = 'IN_PROGRESS',
     DONE = 'DONE',
     IGNORED = 'IGNORED'
 }
 
 export const NAMES: ToDoStatus[] = [
-    ToDoStatus.OPEN, ToDoStatus.INPROGRESS, ToDoStatus.DONE, ToDoStatus.IGNORED
+    ToDoStatus.OPEN, ToDoStatus.IN_PROGRESS, ToDoStatus.DONE, ToDoStatus.IGNORED
 ];

@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TODOS} from '../../../mocks/mock-todos';
 import {ToDoStatus} from '../../../mocks/mock-status';
+import {ApiService} from '../../api.service';
+import {ToDo} from '../../../models/toDo';
+import {MatDialog} from '@angular/material';
+import {NewToDoDialogComponent} from './new-to-do-dialog/new-to-do-dialog.component';
 
 @Component({
     selector: 'app-card',
@@ -9,17 +12,20 @@ import {ToDoStatus} from '../../../mocks/mock-status';
 })
 export class CardComponent implements OnInit {
 
-    TODOS = TODOS;
-
     @Input() header: string;
     @Input() status: ToDoStatus;
+    @Input() TODOS: ToDo[];
 
-    constructor() {
+    constructor(private api: ApiService,
+                private dialog: MatDialog) {
     }
 
     ngOnInit() {
-        this.TODOS = this.TODOS.filter(todo => todo.status === this.status);
         console.log(this.TODOS);
+    }
+
+    addToDo() {
+        const dialogRef = this.dialog.open(NewToDoDialogComponent);
     }
 
 }

@@ -1,6 +1,6 @@
-<div class="content">
-	<div *ngFor="let name of NAMES" class="card-wrapper">
-		<app-card [header]="name" [status]="name">
+<div class="content" *ngIf="TODOS">
+	<div *ngFor="let status of STATUSES" class="card-wrapper">
+		<app-card [header]="status.name" [status]="status.status" [TODOS]="getToDosByStatus(status.status)">
 
 		</app-card>
 	</div>

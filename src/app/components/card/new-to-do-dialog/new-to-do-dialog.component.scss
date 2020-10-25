@@ -1,0 +1,53 @@
+@import "../../../../variables";
+
+.add-to-do-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	mat-form-field {
+		width: 300px;
+		padding-bottom: 8px;
+	}
+}
+
+.dialog {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 400px;
+	margin-top: -8;
+	margin-bottom: -8;
+}
+
+.mat-dialog-title {
+	color: $white;
+	margin: 0;
+	padding-bottom: 16px;
+}
+
+button {
+	color: $white;
+	background-color: $medium-dark-gray;
+	transition: $transition;
+	width: 80px;
+}
+
+.button-row {
+	width: 50%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.double-field {
+	width: 300px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+	mat-form-field {
+		width: 30%;
+	}
+}
